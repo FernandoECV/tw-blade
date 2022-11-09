@@ -77,7 +77,7 @@
                     @continue($projeto['ativo'] === false)
 
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal1">
+                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal{{ $loop->iteration }}">
                             <div
                                 class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i
@@ -90,13 +90,7 @@
                     <h1>Nenhum projeto encontrado</h1>
                 @endforelse
 
-                <nav aria-label="Page navigation example" style="margin-top: 50px;">
-                    <ul class="pagination pagination-lg">
-                        @for ($i = 1; $i < 10; $i++)
-                            <li class="page-item"><a class="page-link" href="#">{{ $i }}</a></li>
-                        @endfor
-                    </ul>
-                </nav>
+                @includeFirst(['site.parciais._paginacao', 'parciais._paginacao', 'main._paginacao'])
             </div>
         </div>
     </section>
