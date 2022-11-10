@@ -32,13 +32,25 @@
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
+                @php
+                    $itensMenu = [
+                        [
+                            'descricao' => 'Portfolio',
+                            'link' => '#portfolio'
+                        ],
+                        [
+                            'descricao' => 'Sobre',
+                            'link' => '#about'
+                        ],
+                        [
+                            'descricao' => 'Contato',
+                            'link' => '#contact'
+                        ]
+                    ];
+                @endphp
+
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#portfolio">Portfolio</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#about">About</a></li>
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                            href="#contact">Contact</a></li>
+                    @each('parciais._itens_menu', $itensMenu, 'item')
                 </ul>
             </div>
         </div>
@@ -77,7 +89,8 @@
                     @continue($projeto['ativo'] === false)
 
                     <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-toggle="modal" data-target="#portfolioModal{{ $loop->iteration }}">
+                        <div class="portfolio-item mx-auto" data-toggle="modal"
+                            data-target="#portfolioModal{{ $loop->iteration }}">
                             <div
                                 class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                                 <div class="portfolio-item-caption-content text-center text-white"><i
@@ -86,11 +99,11 @@
                             <img class="img-fluid" src="assets/img/portfolio/{{ $projeto['imagem'] }}" alt="..." />
                         </div>
                     </div>
-                 @empty
+                @empty
                     <h1>Nenhum projeto encontrado</h1>
                 @endforelse
-
-                @includeFirst(['site.parciais._paginacao', 'parciais._paginacao', 'main._paginacao'])
+                @include('site.parciais._paginacao', ['first' => '<<', 'last' => '>>'])
+                {{-- @includeFirst(['site.parciais._paginacao', 'parciais._paginacao', 'main._paginacao']) --}}
             </div>
         </div>
     </section>
