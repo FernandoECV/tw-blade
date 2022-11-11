@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SiteHerancaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/site/heranca', [SiteHerancaController::class, 'home']);
+Route::get('/site/heranca/portifolio', [SiteHerancaController::class, 'portforlio']);
+Route::get('/site/heranca/sobre', [SiteHerancaController::class, 'sobre']);
+Route::get('/site/heranca/contato', [SiteHerancaController::class, 'home']);
 
 Route::get('/', function () {
     return view('index', [
