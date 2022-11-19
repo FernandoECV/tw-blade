@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/site/heranca', [SiteHerancaController::class, 'home']);
-Route::get('/site/heranca/portifolio', [SiteHerancaController::class, 'portforlio']);
+Route::get('/site/heranca/portfolio', [SiteHerancaController::class, 'portfolio']);
 Route::get('/site/heranca/sobre', [SiteHerancaController::class, 'sobre']);
 Route::get('/site/heranca/contato', [SiteHerancaController::class, 'home']);
 
